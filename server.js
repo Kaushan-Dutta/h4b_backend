@@ -11,12 +11,10 @@ const {userExists}=require('./src/middleware/index');
 require('dotenv').config()
 
 app.use(express.json())
-app.use(cors(
-    {
-        origin:'*'
-    }
+app.use(cors({
+    origin:true
+}));
 
-))
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
 .then(()=>console.log('Connected to MongoDB'))
