@@ -5,13 +5,14 @@ const { mealModel,hockerModel,pantryModel } = require("../models/pantry");
 
 router.post("/", async function placeOrder(req, res) {
   try {
-    const { pantryId, hockerId, email, mealId, quantity, totalPrice } =
+    const { pantryId, hockerId, email, mealId,mealName, quantity, totalPrice } =
       req.body;
     const placeOrder = new orderModel({
       pantryId,
       hockerId,
       email,
       mealId,
+      mealName,
       quantity,
       totalPrice,
     });

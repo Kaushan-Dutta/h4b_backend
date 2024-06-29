@@ -26,6 +26,10 @@ const orderSchema=new mongoose.Schema({
         ref:'MealModel',
         required:true
     },
+    mealName:{
+        type:String,
+        required:true
+    },
     quantity:{
         type:Number,
         required:true
