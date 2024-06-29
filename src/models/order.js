@@ -15,11 +15,9 @@ const orderSchema=new mongoose.Schema({
     hockerId:{
         type:String,
         ref:'HockerModel',
-        required:true
     },
     email:{
         type:String,
-        required:true
     },
     mealId:{
         type:String,
@@ -37,6 +35,11 @@ const orderSchema=new mongoose.Schema({
     totalPrice:{
         type:Number,
         required:true
+    },
+    status:{
+        type:String,
+        enum:['pending','completed'],
+        default:'completed'
     }
 },{timestamps:true
 })
