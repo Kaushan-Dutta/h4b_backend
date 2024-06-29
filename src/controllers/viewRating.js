@@ -1,5 +1,5 @@
 const {ratingModel} = require('../models/Rating');
-async function viewRatings(req,res){
+async function getRatings(req,res){
     try{
         const ratings=await ratingModel.find();
         console.log(ratings);
@@ -10,4 +10,4 @@ async function viewRatings(req,res){
         return res.status(500).json({message:err.message});
     }
 }
-module.exports={viewRatings};
+module.exports={getRatings};
