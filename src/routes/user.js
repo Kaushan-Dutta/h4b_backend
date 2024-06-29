@@ -4,7 +4,6 @@ const {createJourney,viewOrders}=require('../controllers/user');
 const {journeyExists}=require('../middleware/index');
 const {viewMeals}=require('../controllers/account');
 
-const {contributeOrder}=require('../controllers/user');
 const { createRating } = require('../controllers/rating');
 
 const {contributeOrder,createOrder}=require('../controllers/user');
