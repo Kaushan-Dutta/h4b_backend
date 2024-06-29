@@ -37,4 +37,24 @@ async function contributeOrder(req,res){
         return res.status(500).json({message:err.message});
     }
 }
-module.exports={createJourney,viewOrders,contributeOrder};
+async function createOrder(req,res){
+    try {
+      const { pantryId, hockerId, email, mealId,mealName, quantity, totalPrice } =
+        req.body;
+      const placeOrder = new orderModel({
+        pantryId,
+        hockerId,
+        email,
+        mealId,
+        mealName,
+        quantity,
+        totalPrice,
+        status:'pending'
+      });
+      await placeOrder.save();
+      return res.status(201).json({ message: "Order placed" });
+    } catch (err) {
+      return res.status(500).json({ message: err.message });
+    }
+};
+module.exports={createJourney,viewOrders,contributeOrder,createOrder};
