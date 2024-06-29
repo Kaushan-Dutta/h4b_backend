@@ -15,11 +15,9 @@ const orderSchema=new mongoose.Schema({
     hockerId:{
         type:String,
         ref:'HockerModel',
-        required:true
     },
     email:{
         type:String,
-        required:true
     },
     mealId:{
         type:String,

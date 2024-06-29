@@ -39,12 +39,11 @@ async function contributeOrder(req,res){
 }
 async function createOrder(req,res){
     try {
-      const { pantryId, hockerId, email, mealId,mealName, quantity, totalPrice } =
+      const { pantryId, mealId,mealName, quantity, totalPrice } =
         req.body;
       const placeOrder = new orderModel({
         pantryId,
-        hockerId,
-        email,
+       
         mealId,
         mealName,
         quantity,
