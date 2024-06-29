@@ -10,6 +10,9 @@ router.route('/hocker').post(addHocker);
 router.route('/meal').get(viewMeals).post(addMeal);
 router.route('/contribute').get(viewContribute);
 
+// router.route('/rating').get();
+
+
 module.exports=router;
 
 
