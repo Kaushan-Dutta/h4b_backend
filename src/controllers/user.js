@@ -1,3 +1,4 @@
+const { contributeModel } = require('../models/contribute');
 const {journeyModel}=require('../models/journey');
 const {orderModel}=require('../models/order');
 
@@ -24,4 +25,16 @@ async function viewOrders(req,res){
         return res.status(500).json({message:err.message});
     }
 }
-module.exports={createJourney,viewOrders};
+async function contributeOrder(req,res){
+    const {orderId,percent,pantryId}=req.body;
+    console.log(req.body);
+    try{    
+        const order=new contributeModel({orderId,percent,pantryId});
+        await order.save();
+        return res.status(201).json({message:'Order contributed'});
+    }
+    catch(err){
+        return res.status(500).json({message:err.message});
+    }
+}
+module.exports={createJourney,viewOrders,contributeOrder};
