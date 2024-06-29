@@ -1,5 +1,6 @@
 const {pantryModel,mealModel,hockerModel}=require('../models/pantry');
 const {contributeModel}=require('../models/contribute');
+const {orderModel}=require('../models/order')
 
 async function addPantry(req,res){
     try{
@@ -57,15 +58,35 @@ async function viewPantry(req,res){
 }
 async function viewContribute(req,res){
     const {pantryId}=req.query;
-
+    let view,orders;
     try{
-        const view=await contributeModel.find({
+        if(pantryId){
+            view=await contributeModel.find({
             pantryId
-        });
-        return res.status(200).json({data:view})
+        })}
+        else{
+            view=await contributeModel.find();
+            orders=await orderModel.find({
+                _id:view.orderId
+            });
+        }
+        return res.status(200).json({data: {view,orders}})
     }
     catch(err){
         return res.status(500).json({message:err.message});
     }
 }
-module.exports={addPantry,addMeal,addHocker,viewPantry,viewContribute};
+async function viewOrders(req,res){
+    try{
+        const orders=await orderModel.find({
+            
+        });
+        return res.status(200).json({data:orders})
+    }
+    catch(err){
+        return res.status(500).json({message:err.message});
+    }
+}
+
+
+module.exports={addPantry,addMeal,addHocker,viewPantry,viewContribute,viewOrders};
